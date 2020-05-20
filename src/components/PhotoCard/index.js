@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from '@reach/router';
+
 import { Article, ImgWrapper, Img } from './styles';
 
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -23,11 +25,11 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
                 //if show, then
                 show && 
                 <React.Fragment>
-                    <a href={`/?detail=${id}`}>
+                    <Link to={`/detail/${id}`}>
                         <ImgWrapper>
                             <Img src={src} />
                         </ImgWrapper>
-                    </a>
+                    </Link>
 
                     <ToggleLikeMutation>
                         {

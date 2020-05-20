@@ -5,6 +5,7 @@ module.exports = {
     mode: 'production',
     output: {
         filename: 'app.bundle.js',
+        publicPath: '/',
         path: path.resolve(__dirname, 'public')
     },
     plugins: [

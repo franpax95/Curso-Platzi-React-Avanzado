@@ -14,8 +14,8 @@ function useCategoriesData(){
             .then(res => res.json())
             .then(response => {
                 setCategories(response);
-                //add some delay (2s) to see the loading
-                setTimeout(() => setLoading(false), 2000);
+                //add some delay (1s) to see the loading
+                setTimeout(() => setLoading(false), 1000);
             });
     }, []);
 
@@ -42,7 +42,9 @@ export const ListOfCategories = () => {
                 (loading) 
                     ? <Item key='loading'><Category /></Item>
                     : categories.map((category) => (
-                        <Item key={category.id}><Category {...category} /></Item>
+                        <Item key={category.id}>
+                            <Category {...category} path={`/pet/${category.id}`} />
+                        </Item>
                       ))
             }
         </List>
