@@ -2,6 +2,7 @@ import React from 'react';
 import { Router } from '@reach/router';
 
 import { GlobalStyle } from './styles/GlobalStyle';
+import Context from './Context';
 import { Logo } from './components/Logo';
 
 import { Navbar } from './components/Navbar';
@@ -12,9 +13,6 @@ import { User } from './pages/User';
 import { NotRegisteredUser } from './pages/NotRegisteredUser';
 
 
-const UserLogged = ({ children }) => {
-    return children({ isAuth: false });
-}
 
 export const App = () => {
     return(
@@ -27,7 +25,7 @@ export const App = () => {
                 <Detail path='/detail/:detailId' />
             </Router>
 
-            <UserLogged>
+            <Context.Consumer>
                 {
                     ({ isAuth }) => isAuth 
                         ?   <Router>
@@ -39,7 +37,7 @@ export const App = () => {
                                 <NotRegisteredUser path='/user' />
                             </Router>
                 }   
-            </UserLogged>
+            </Context.Consumer>
                 
             <Navbar />
         </React.Fragment>
